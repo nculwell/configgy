@@ -52,6 +52,7 @@ private[configgy] class Attributes(val config: Config, val name: String) extends
     val buffer = new StringBuilder("{")
     buffer ++= name
     buffer ++= (inheritFrom match {
+      // FIXME: non-exhaustive match
       case Some(a: Attributes) => " (inherit=" + a.name + ")"
       case None => ""
     })
@@ -151,6 +152,7 @@ private[configgy] class Attributes(val config: Config, val name: String) extends
     cells ++= newAttributes.cells
     for ((key, cell) <- subnodes) {
       newAttributes.cells.get(key) match {
+        // FIXME: non-exhaustive match
         case Some(AttributesCell(newattr)) =>
           cell.attr.replaceWith(newattr)
           cells(key) = cell
