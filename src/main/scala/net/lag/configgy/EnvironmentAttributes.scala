@@ -87,6 +87,6 @@ private[configgy] object EnvironmentAttributes extends ConfigMap {
       env = env.updated("HOSTNAME", dns)
     }
   } catch {
-    case _ => // pass
+    case _: Exception => // pass
   }
 }
